@@ -1,9 +1,13 @@
-import { TotalExpenses } from "../../components/TotalExpenses/TotalExpenses"
+import { TotalExpenses } from "../../components/TotalExpenses/TotalExpenses";
+import { ExpensesList } from "../../components/ExpensesList/ExpensesList";
 
 const HomeView = () => {
-    return (
-        <TotalExpenses />
-    )
-}
+  return (
+    <>
+      <TotalExpenses />
+      <ExpensesList />
+    </>
+  );
+};
 
-export {HomeView}
+export { HomeView };

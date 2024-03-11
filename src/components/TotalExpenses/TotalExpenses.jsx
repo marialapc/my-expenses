@@ -1,40 +1,35 @@
-import './TotalExpenses.css'
+import "./TotalExpenses.css";
 
-import { useState } from 'react'
+import { useState } from "react";
 
+const maxValue = 10;
+const minValue = 0;
 
-const TotalExpenses = () => {  
-    // const myState = useState(0)
-    // const myStateValue = myState[0];
-    // const updateMyState = myState[1];
-    //destructuring
+const TotalExpenses = () => {
+  const [myState, setMystate] = useState(0);
 
-    const [myState, setMystate] = useState(0)
-
-    const handleClickAdd = () => {
-        if (myState < 10) {
-        setMystate(myState+ 1)
-        }
+  const handleClickAdd = () => {
+    if (myState < maxValue) {
+      setMystate(myState + 1);
     }
+  };
 
-    const handleClickRemove = () => {
-        if (myState > 0) {
-        setMystate(myState - 1)
-        }
+  const handleClickRemove = () => {
+    if (myState > minValue) {
+      setMystate(myState - 1);
     }
+  };
 
-    return (
-        <article className='total-expenses'>
-           <h1>Gastado total</h1>
-           <section>
-            <h2>{myState}</h2>
-           </section>
-           <button onClick={handleClickAdd}>+</button>
-           <button onClick={handleClickRemove}>-</button>
+  return (
+    <article className="total-expenses">
+      <h1>Gastado total</h1>
+      <section>
+        <h2>{myState}$</h2>
+      </section>
+      <button onClick={handleClickAdd}>+</button>
+      <button onClick={handleClickRemove}>-</button>
+    </article>
+  );
+};
 
-        </article>
-
-    )
-}
-
-export {TotalExpenses}
+export { TotalExpenses };
