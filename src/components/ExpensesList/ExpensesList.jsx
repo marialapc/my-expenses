@@ -1,23 +1,45 @@
 import { useState } from "react";
 
-const expense = {
-  amount: 100,
-};
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
+function createRandomExpense() {
+  const expense = { amount: getRandomInt(100) };
+  return expense;
+}
+
+const maxExpenses = 4;
 
 const ExpensesList = () => {
-  const [expenses, setExpenses] = useState([]);
+  const [expenses, setExpenses] = useState([
+    createRandomExpense(),
+    createRandomExpense(),
+  ]);
 
   const handleAddExpense = () => {
-    //añadir expense aleatorio, max de cantidades, button clear
-    setExpenses((oldExpenses) => {
-      return [...oldExpenses, expense];
-    });
+    if (expenses.length < maxExpenses) {
+      const randomExpense = createRandomExpense();
+      setExpenses((oldExpenses) => {
+        return [...oldExpenses, randomExpense];
+      });
+    }
   };
 
   const handleDeleteExpense = () => {
     setExpenses((oldExpenses) => {
       const copied = [...oldExpenses];
       copied.pop();
+
+      return copied;
+    });
+  };
+
+  const handleClearExpenses = () => {
+    //volver al estado inicial
+    setExpenses((oldExpenses) => {
+      let copied = [...oldExpenses];
+      copied = [];
 
       return copied;
     });
@@ -32,6 +54,7 @@ const ExpensesList = () => {
       </ul>
       <button onClick={handleAddExpense}>+</button>
       <button onClick={handleDeleteExpense}>-</button>
+      <button onClick={handleClearExpenses}>Clear</button>
     </>
   );
 };
