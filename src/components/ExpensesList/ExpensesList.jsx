@@ -1,5 +1,8 @@
 import { useState } from "react";
 
+const initialState = [{ amount: 27 }];
+const maxExpenses = 4;
+
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
@@ -9,13 +12,8 @@ function createRandomExpense() {
   return expense;
 }
 
-const maxExpenses = 4;
-
 const ExpensesList = () => {
-  const [expenses, setExpenses] = useState([
-    createRandomExpense(),
-    createRandomExpense(),
-  ]);
+  const [expenses, setExpenses] = useState(initialState);
 
   const handleAddExpense = () => {
     if (expenses.length < maxExpenses) {
@@ -36,10 +34,9 @@ const ExpensesList = () => {
   };
 
   const handleClearExpenses = () => {
-    //volver al estado inicial
     setExpenses((oldExpenses) => {
       let copied = [...oldExpenses];
-      copied = [];
+      copied = initialState;
 
       return copied;
     });
