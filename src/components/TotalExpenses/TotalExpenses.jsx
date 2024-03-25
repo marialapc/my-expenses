@@ -22,7 +22,7 @@ const TotalExpenses = () => {
 
   return (
     <article className="total-expenses">
-      <h1>Gastado total</h1>
+      <h2>Gastado total</h2>
       <section>
         <h2>{myState}$</h2>
       </section>

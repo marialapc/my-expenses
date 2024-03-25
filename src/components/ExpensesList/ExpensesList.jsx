@@ -1,3 +1,5 @@
+import "./ExpensesList.css";
+
 import { useState } from "react";
 
 const initialState = [{ amount: 27 }];
@@ -44,7 +46,7 @@ const ExpensesList = () => {
 
   return (
     <>
-      <ul>
+      <ul className="expenses-list">
         {expenses.map((expense, index) => (
           <li key={index}>{expense.amount}</li>
         ))}
