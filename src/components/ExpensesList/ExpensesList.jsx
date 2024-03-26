@@ -1,18 +1,19 @@
+import { useState } from "react";
 import "./ExpensesList.css";
 
-import { useState } from "react";
-
-const initialState = [{ amount: 27 }];
 const maxExpenses = 4;
+const maxAmount = 100;
 
-function getRandomInt(max) {
+const createRandomExpense = () => {
+  const expense = { amount: getRandomInt(maxAmount) };
+  return expense;
+}
+
+const getRandomInt = (max) => {
   return Math.floor(Math.random() * max);
 }
 
-function createRandomExpense() {
-  const expense = { amount: getRandomInt(100) };
-  return expense;
-}
+const initialState = [createRandomExpense()];
 
 const ExpensesList = () => {
   const [expenses, setExpenses] = useState(initialState);
@@ -36,12 +37,7 @@ const ExpensesList = () => {
   };
 
   const handleClearExpenses = () => {
-    setExpenses((oldExpenses) => {
-      let copied = [...oldExpenses];
-      copied = initialState;
-
-      return copied;
-    });
+    setExpenses(initialState);
   };
 
   return (
