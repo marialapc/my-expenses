@@ -3,9 +3,6 @@ import "./Filters.css";
 const Filters = () => {
   function handleOrderExpenses() {
     // const orderedExpenses = expenses.sort();
-
-    console.log("hi");
-
     // return orderedExpenses;
   }
 

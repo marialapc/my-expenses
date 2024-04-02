@@ -20,6 +20,8 @@ const TotalExpenses = () => {
     }
   };
 
+  const handleClickEnter = () => {};
+
   return (
     <article className="total-expenses">
       <h2>Gastado total</h2>
@@ -28,6 +30,7 @@ const TotalExpenses = () => {
       </section>
       <button onClick={handleClickAdd}>+</button>
       <button onClick={handleClickRemove}>-</button>
+      <button onClick={handleClickEnter}>Enter</button>
     </article>
   );
 };
