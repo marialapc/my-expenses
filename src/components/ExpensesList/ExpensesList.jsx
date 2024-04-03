@@ -1,6 +1,7 @@
 import "./ExpensesList.css";
 
 import { useState } from "react";
+import { Expense } from "../Expense/Expense";
 
 const maxExpenses = 4;
 const maxAmount = 100;
@@ -44,9 +45,7 @@ const ExpensesList = () => {
   return (
     <>
       <ul className="expenses-list">
-        {expenses.map((expense, index) => (
-          <li key={index}>{expense.amount}</li>
-        ))}
+        <Expense expenses={expenses} />
       </ul>
       <button onClick={handleAddExpense}>+</button>
       <button onClick={handleDeleteExpense}>-</button>
