@@ -1,33 +1,14 @@
 import "./ExpensesList.css";
 
 import { useState } from "react";
+import { AddButton } from "../Buttons/AddButton";
+import { createRandomExpense } from "../../utils/createRandomExpense";
 import { Expense } from "../Expense/Expense";
-
-const maxExpenses = 4;
-const maxAmount = 100;
-
-const getRandomInt = (max) => {
-  return Math.floor(Math.random() * max);
-};
-
-const createRandomExpense = () => {
-  const expense = { amount: getRandomInt(maxAmount) };
-  return expense;
-};
 
 const initialState = [createRandomExpense()];
 
 const ExpensesList = () => {
   const [expenses, setExpenses] = useState(initialState);
-
-  const handleAddExpense = () => {
-    if (expenses.length < maxExpenses) {
-      const randomExpense = createRandomExpense();
-      setExpenses((oldExpenses) => {
-        return [...oldExpenses, randomExpense];
-      });
-    }
-  };
 
   const handleDeleteExpense = () => {
     setExpenses((oldExpenses) => {
@@ -45,9 +26,11 @@ const ExpensesList = () => {
   return (
     <>
       <ul className="expenses-list">
-        <Expense expenses={expenses} />
+        {expenses.map((expense, index) => (
+          <Expense key={index} amount={expense.amount} />
+        ))}
       </ul>
-      <button onClick={handleAddExpense}>+</button>
+      <AddButton expenses={expenses} setExpenses={setExpenses} />
       <button onClick={handleDeleteExpense}>-</button>
       <button onClick={handleClearExpenses}>Clear</button>
     </>

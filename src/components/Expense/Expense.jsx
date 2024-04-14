@@ -1,9 +1,5 @@
-const Expense = (props) => {
-  const Expense = props.expenses.map((expense, index) => (
-    <li key={index}>{expense.amount}</li>
-  ));
-
-  return Expense;
+const Expense = ({ amount }) => {
+  return <li>{amount}</li>;
 };
 
 export { Expense };
