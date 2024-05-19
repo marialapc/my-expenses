@@ -9,4 +9,4 @@ const createRandomExpense = () => {
     return expense;
 };
 
-export { createRandomExpense} ;
+export { createRandomExpense};

@@ -2,6 +2,8 @@ import "./ExpensesList.css";
 
 import { useState } from "react";
 import { AddButton } from "../Buttons/AddButton";
+import { DeleteButton } from "../Buttons/DeleteButton";
+import { ClearButton } from "../Buttons/ClearButton";
 import { createRandomExpense } from "../../utils/createRandomExpense";
 import { Expense } from "../Expense/Expense";
 
@@ -9,19 +11,6 @@ const initialState = [createRandomExpense()];
 
 const ExpensesList = () => {
   const [expenses, setExpenses] = useState(initialState);
-
-  const handleDeleteExpense = () => {
-    setExpenses((oldExpenses) => {
-      const copied = [...oldExpenses];
-      copied.pop();
-
-      return copied;
-    });
-  };
-
-  const handleClearExpenses = () => {
-    setExpenses(initialState);
-  };
 
   return (
     <>
@@ -31,8 +20,8 @@ const ExpensesList = () => {
         ))}
       </ul>
       <AddButton expenses={expenses} setExpenses={setExpenses} />
-      <button onClick={handleDeleteExpense}>-</button>
-      <button onClick={handleClearExpenses}>Clear</button>
+      <DeleteButton setExpenses={setExpenses} />
+      <ClearButton initialState={initialState} setExpenses={setExpenses} />
     </>
   );
 };
