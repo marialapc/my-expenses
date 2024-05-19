@@ -1,8 +1,5 @@
-const ClearButton = ({ initialState, setExpenses }) => {
-  const handleClearExpenses = () => {
-    setExpenses(initialState);
-  };
-  return <button onClick={handleClearExpenses}>Clear</button>;
+const ClearButton = ({ onClick }) => {
+  return <button onClick={onClick}>Clear</button>;
 };
 
 export { ClearButton };
